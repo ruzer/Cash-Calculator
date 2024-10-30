@@ -21,8 +21,8 @@ struct DenominationsView: View {
                                     .foregroundColor(.blue)
                             }
 
-                            // Muestra el valor de la denominación
-                            Text("\(Int(denomination.value))")
+                            // Muestra el valor de la denominación con dos decimales
+                            Text("\(denomination.value, specifier: "%.2f")")
                                 .foregroundColor(.gray)
 
                             Spacer()
@@ -31,7 +31,7 @@ struct DenominationsView: View {
                             Menu {
                                 Button("Editar") {
                                     selectedDenomination = denomination
-                                    newValue = String(Int(denomination.value))
+                                    newValue = String(format: "%.2f", denomination.value) // Muestra el valor actual con decimales en el campo de edición
                                     showAddModal = true
                                 }
                                 Button("Eliminar", role: .destructive) {
